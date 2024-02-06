@@ -1,0 +1,917 @@
+Installing OpenPLC on Linux
+Hit:2 http://security.ubuntu.com/ubuntu bionic-security InRelease
+Hit:1 https://apt.llvm.org/bionic llvm-toolchain-bionic-14 InRelease
+Hit:3 https://dl.google.com/linux/chrome/deb stable InRelease
+Hit:4 https://deb.nodesource.com/node_20.x nodistro InRelease
+Hit:5 http://us.archive.ubuntu.com/ubuntu bionic InRelease
+Hit:6 http://us.archive.ubuntu.com/ubuntu bionic-updates InRelease
+Hit:7 http://ppa.launchpad.net/bluetooth/bluez/ubuntu bionic InRelease
+Hit:8 http://us.archive.ubuntu.com/ubuntu bionic-backports InRelease
+Hit:9 http://ppa.launchpad.net/deadsnakes/ppa/ubuntu bionic InRelease
+Hit:10 http://ppa.launchpad.net/ubuntu-toolchain-r/test/ubuntu bionic InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+autoconf is already the newest version (2.69-11).
+automake is already the newest version (1:1.15.1-3ubuntu2).
+bison is already the newest version (2:3.0.4.dfsg-1build1).
+build-essential is already the newest version (12.4ubuntu1).
+flex is already the newest version (2.6.4-6).
+libtool is already the newest version (2.4.6-2).
+make is already the newest version (4.1-9.1ubuntu1).
+pkg-config is already the newest version (0.29.1-0ubuntu2).
+cmake is already the newest version (3.10.2-1ubuntu2.18.04.2).
+curl is already the newest version (7.58.0-2ubuntu3.24).
+git is already the newest version (1:2.17.1-1ubuntu0.18).
+python3 is already the newest version (3.6.7-1~18.04).
+sqlite3 is already the newest version (3.22.0-1ubuntu0.7).
+python3-venv is already the newest version (3.6.7-1~18.04).
+The following packages were automatically installed and are no longer required:
+  command-not-found-data gcc-11-base:i386 gir1.2-gst-plugins-base-1.0
+  gir1.2-gstreamer-1.0 gir1.2-harfbuzz-0.0 gir1.2-rb-3.0 gir1.2-totem-1.0
+  gir1.2-totemplparser-1.0 gyp icu-devtools indicator-messages libasound2-dev
+  libcapnp-0.6.1 libdbus-1-dev libdmapsharing-3.0-2 libegl1-mesa-dev
+  libgles2-mesa-dev libglu1-mesa-dev libgpod-common libgpod4 libgraphite2-dev
+  libharfbuzz-gobject0 libhttp-parser2.7.1 libice-dev libicu-le-hb0 libiculx60
+  libjemalloc1 libjs-async libjs-inherits libjs-node-uuid libjs-sphinxdoc
+  libjs-underscore liblirc-client0 libmirclient-dev libmirclient9
+  libmircommon-dev libmircommon7 libmircookie-dev libmircookie2 libmircore-dev
+  libmircore1 libmirprotobuf3 libmsgpackc2 libnetplan0 libpanel-applet3
+  libpcre16-3 libpcre3-dev libpcre32-3 libpcrecpp0v5 libprotobuf-dev
+  libprotobuf-lite10 libsdl2-2.0-0 libsgutils2-2 libsm-dev libsndio-dev
+  libssl1.0-dev libtermkey1 libudev-dev libunibilium4 libuv1-dev libvterm0
+  libwayland-bin libwayland-dev libxatracker2 libxcursor-dev libxi-dev
+  libxinerama-dev libxkbcommon-dev libxnvctrl0 libxrandr-dev libxrender-dev
+  libxss-dev libxt-dev libxv-dev libxvmc1 libz3-4 libz3-dev neovim-runtime
+  nodejs-doc python-concurrent.futures python-greenlet python-msgpack
+  python-neovim python-pkg-resources python-six python-trollius
+  x11proto-randr-dev x11proto-scrnsaver-dev x11proto-xinerama-dev
+Use 'sudo apt autoremove' to remove them.
+0 upgraded, 0 newly installed, 0 to remove and 1 not upgraded.
+Requirement already satisfied: flask==2.1 in ./.venv/lib/python3.10/site-packages (2.1.0)
+Requirement already satisfied: werkzeug==2.1 in ./.venv/lib/python3.10/site-packages (2.1.0)
+Requirement already satisfied: flask-login==0.6.2 in ./.venv/lib/python3.10/site-packages (0.6.2)
+Requirement already satisfied: pyserial in ./.venv/lib/python3.10/site-packages (3.5)
+Requirement already satisfied: pymodbus==2.5.3 in ./.venv/lib/python3.10/site-packages (2.5.3)
+Requirement already satisfied: click>=8.0 in ./.venv/lib/python3.10/site-packages (from flask==2.1) (8.1.7)
+Requirement already satisfied: Jinja2>=3.0 in ./.venv/lib/python3.10/site-packages (from flask==2.1) (3.1.2)
+Requirement already satisfied: itsdangerous>=2.0 in ./.venv/lib/python3.10/site-packages (from flask==2.1) (2.1.2)
+Requirement already satisfied: six>=1.15.0 in ./.venv/lib/python3.10/site-packages (from pymodbus==2.5.3) (1.16.0)
+Requirement already satisfied: MarkupSafe>=2.0 in ./.venv/lib/python3.10/site-packages (from Jinja2>=3.0->flask==2.1) (2.1.3)
+
+[notice] A new release of pip is available: 23.0.1 -> 23.3.1
+[notice] To update, run: python3 -m pip install --upgrade pip
+[MATIEC COMPILER]
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+/home/raihan/OpenPLC_v3/utils/matiec_src/config/missing: Unknown `--is-lightweight' option
+Try `/home/raihan/OpenPLC_v3/utils/matiec_src/config/missing --help' for more information
+configure: WARNING: 'missing' script is too old or missing
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking for bison... bison -y
+checking for style of include used by make... GNU
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking dependency style of gcc... gcc3
+checking for flex... flex
+checking lex output file root... lex.yy
+checking lex library... -lfl
+checking whether yytext is a pointer... yes
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... (cached) yes
+checking for ranlib... ranlib
+checking for gawk... (cached) gawk
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking float.h usability... yes
+checking float.h presence... yes
+checking for float.h... yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking for stdint.h... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for string.h... (cached) yes
+checking for strings.h... (cached) yes
+checking sys/timeb.h usability... yes
+checking sys/timeb.h presence... yes
+checking for sys/timeb.h... yes
+checking for unistd.h... (cached) yes
+checking for stdbool.h that conforms to C99... yes
+checking for _Bool... yes
+checking for inline... inline
+checking for int16_t... yes
+checking for int32_t... yes
+checking for int64_t... yes
+checking for int8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for uint8_t... yes
+checking for stdlib.h... (cached) yes
+checking for GNU libc compatible malloc... yes
+checking whether time.h and sys/time.h may both be included... yes
+checking for sys/time.h... yes
+checking for unistd.h... (cached) yes
+checking for alarm... yes
+checking for working mktime... yes
+checking for stdlib.h... (cached) yes
+checking for GNU libc compatible realloc... yes
+checking for clock_gettime... yes
+checking for memset... yes
+checking for pow... no
+checking for strcasecmp... yes
+checking for strdup... yes
+checking for strtoul... yes
+checking for strtoull... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating absyntax/Makefile
+config.status: creating absyntax_utils/Makefile
+config.status: creating stage1_2/Makefile
+config.status: creating stage3/Makefile
+config.status: creating stage4/Makefile
+config.status: creating stage4/generate_c/Makefile
+config.status: creating stage4/generate_iec/Makefile
+config.status: creating config/config.h
+config.status: config/config.h is unchanged
+config.status: executing depfiles commands
+Making all in absyntax
+make[1]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/absyntax'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/absyntax'
+Making all in absyntax_utils
+make[1]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/absyntax_utils'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/absyntax_utils'
+Making all in stage1_2
+make[1]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage1_2'
+make  all-am
+make[2]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage1_2'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage1_2'
+make[1]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage1_2'
+Making all in stage3
+make[1]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage3'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage3'
+Making all in stage4
+make[1]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4'
+Making all in generate_c
+make[2]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4/generate_c'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4/generate_c'
+Making all in generate_iec
+make[2]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4/generate_iec'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4/generate_iec'
+make[2]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4'
+make[1]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src/stage4'
+make[1]: Entering directory '/home/raihan/OpenPLC_v3/utils/matiec_src'
+make[1]: Leaving directory '/home/raihan/OpenPLC_v3/utils/matiec_src'
+[ST OPTIMIZER]
+[GLUE GENERATOR]
+[OPEN DNP3]
+creating swapfile...
+mkswap: /home/raihan/OpenPLC_v3/swapfile: insecure permissions 0644, 0600 suggested.
+Setting up swapspace version 1, size = 1024 MiB (1073737728 bytes)
+no label, UUID=eb52eae9-4e38-4b25-98bb-b6d9449c278a
+swapon: /home/raihan/OpenPLC_v3/swapfile: insecure permissions 0644, 0600 suggested.
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake build is: Release
+ASIO has been checked out as a git submodule: /home/raihan/OpenPLC_v3/utils/dnp3_src/deps/asio/asio/include
+-- Configuring done (0.0s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/raihan/OpenPLC_v3/utils/dnp3_src
+[  9%] Built target openpal
+[ 83%] Built target opendnp3
+[ 90%] Built target asiopal
+[100%] Built target asiodnp3
+[  9%] Built target openpal
+[ 83%] Built target opendnp3
+[ 90%] Built target asiopal
+[100%] Built target asiodnp3
+Install the project...
+-- Install configuration: "Release"
+-- Up-to-date: /usr/local/lib/libopenpal.so
+-- Up-to-date: /usr/local/lib/libopendnp3.so
+-- Up-to-date: /usr/local/lib/libasiopal.so
+-- Up-to-date: /usr/local/lib/libasiodnp3.so
+-- Up-to-date: /usr/local/include
+-- Up-to-date: /usr/local/include/opendnp3
+-- Up-to-date: /usr/local/include/opendnp3/LogLevels.h
+-- Up-to-date: /usr/local/include/opendnp3/link
+-- Up-to-date: /usr/local/include/opendnp3/link/LinkHeaderFields.h
+-- Up-to-date: /usr/local/include/opendnp3/link/ILinkListener.h
+-- Up-to-date: /usr/local/include/opendnp3/link/LinkConfig.h
+-- Up-to-date: /usr/local/include/opendnp3/link/LinkStatistics.h
+-- Up-to-date: /usr/local/include/opendnp3/gen
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventFrozenCounterVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/HMACType.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/UserOperation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/CounterQuality.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventAnalogOutputStatusVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticBinaryOutputStatusVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/LinkFunction.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/DoubleBitBinaryQuality.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticSecurityStatVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/TaskCompletion.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/BinaryOutputStatusQuality.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticAnalogVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticTimeAndIntervalVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticAnalogOutputStatusVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventDoubleBinaryVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventAnalogVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/DoubleBit.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/FrozenCounterQuality.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/KeyStatus.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/IndexMode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/AuthErrorCode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/ControlCode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/FlagsType.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/TimeSyncMode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/CertificateType.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/ChannelState.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/AnalogQuality.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/KeyChangeMethod.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/SecurityStatIndex.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/Attributes.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/ChallengeReason.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventSecurityStatVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/CommandStatus.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticBinaryVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventBinaryVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/OperateType.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticFrozenCounterVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/BinaryQuality.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/AnalogOutputStatusQuality.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/MasterTaskType.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticTypeBitmask.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventCounterVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventBinaryOutputStatusVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/FunctionCode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/RestartType.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/UserRole.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/KeyWrapAlgorithm.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/ConfigAuthMode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/CommandPointState.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/GroupVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticCounterVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StopBits.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/RestartMode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/LinkStatus.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/FlowControl.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/IntervalUnits.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/EventMode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/AssignClassType.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/TimestampMode.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/StaticDoubleBinaryVariation.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/PointClass.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/Parity.h
+-- Up-to-date: /usr/local/include/opendnp3/gen/QualifierCode.h
+-- Up-to-date: /usr/local/include/opendnp3/StackStatistics.h
+-- Up-to-date: /usr/local/include/opendnp3/master
+-- Up-to-date: /usr/local/include/opendnp3/master/CommandPointResult.h
+-- Up-to-date: /usr/local/include/opendnp3/master/ICommandProcessor.h
+-- Up-to-date: /usr/local/include/opendnp3/master/ITaskCallback.h
+-- Up-to-date: /usr/local/include/opendnp3/master/HeaderInfo.h
+-- Up-to-date: /usr/local/include/opendnp3/master/ICommandCollection.h
+-- Up-to-date: /usr/local/include/opendnp3/master/CommandSet.h
+-- Up-to-date: /usr/local/include/opendnp3/master/CommandCallbackT.h
+-- Up-to-date: /usr/local/include/opendnp3/master/HeaderTypes.h
+-- Up-to-date: /usr/local/include/opendnp3/master/TaskId.h
+-- Up-to-date: /usr/local/include/opendnp3/master/ICommandTaskResult.h
+-- Up-to-date: /usr/local/include/opendnp3/master/ISOEHandler.h
+-- Up-to-date: /usr/local/include/opendnp3/master/IMasterApplication.h
+-- Up-to-date: /usr/local/include/opendnp3/master/TaskInfo.h
+-- Up-to-date: /usr/local/include/opendnp3/master/RestartOperationResult.h
+-- Up-to-date: /usr/local/include/opendnp3/master/TaskConfig.h
+-- Up-to-date: /usr/local/include/opendnp3/master/MasterParams.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation
+-- Up-to-date: /usr/local/include/opendnp3/outstation/IUpdateHandler.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/SimpleCommandHandler.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/Cell.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/ApplicationIIN.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/EventBufferConfig.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/OutstationConfig.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/OutstationParams.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/MeasurementConfig.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/IOutstationApplication.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/StaticTypeBitfield.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/DatabaseSizes.h
+-- Up-to-date: /usr/local/include/opendnp3/outstation/ICommandHandler.h
+-- Up-to-date: /usr/local/include/opendnp3/app
+-- Up-to-date: /usr/local/include/opendnp3/app/MeasurementTypeSpecs.h
+-- Up-to-date: /usr/local/include/opendnp3/app/BinaryCommandEvent.h
+-- Up-to-date: /usr/local/include/opendnp3/app/ControlRelayOutputBlock.h
+-- Up-to-date: /usr/local/include/opendnp3/app/AnalogOutput.h
+-- Up-to-date: /usr/local/include/opendnp3/app/Flags.h
+-- Up-to-date: /usr/local/include/opendnp3/app/QualityMasks.h
+-- Up-to-date: /usr/local/include/opendnp3/app/EventTriggers.h
+-- Up-to-date: /usr/local/include/opendnp3/app/DNPTime.h
+-- Up-to-date: /usr/local/include/opendnp3/app/EventCells.h
+-- Up-to-date: /usr/local/include/opendnp3/app/OctetData.h
+-- Up-to-date: /usr/local/include/opendnp3/app/IINField.h
+-- Up-to-date: /usr/local/include/opendnp3/app/MeasurementInfo.h
+-- Up-to-date: /usr/local/include/opendnp3/app/OctetString.h
+-- Up-to-date: /usr/local/include/opendnp3/app/ClassField.h
+-- Up-to-date: /usr/local/include/opendnp3/app/AppConstants.h
+-- Up-to-date: /usr/local/include/opendnp3/app/MeasurementTypes.h
+-- Up-to-date: /usr/local/include/opendnp3/app/BaseMeasurementTypes.h
+-- Up-to-date: /usr/local/include/opendnp3/app/ITransactable.h
+-- Up-to-date: /usr/local/include/opendnp3/app/parsing
+-- Up-to-date: /usr/local/include/opendnp3/app/parsing/ICollection.h
+-- Up-to-date: /usr/local/include/opendnp3/app/AnalogCommandEvent.h
+-- Up-to-date: /usr/local/include/opendnp3/app/SecurityStat.h
+-- Up-to-date: /usr/local/include/opendnp3/app/EventType.h
+-- Up-to-date: /usr/local/include/opendnp3/app/Indexed.h
+-- Up-to-date: /usr/local/include/opendnp3/app/GroupVariationID.h
+-- Up-to-date: /usr/local/include/asiodnp3
+-- Up-to-date: /usr/local/include/asiodnp3/IChannelListener.h
+-- Up-to-date: /usr/local/include/asiodnp3/DefaultMasterApplication.h
+-- Up-to-date: /usr/local/include/asiodnp3/Updates.h
+-- Up-to-date: /usr/local/include/asiodnp3/IMasterOperations.h
+-- Up-to-date: /usr/local/include/asiodnp3/OutstationStackConfig.h
+-- Up-to-date: /usr/local/include/asiodnp3/PrintingCommandCallback.h
+-- Up-to-date: /usr/local/include/asiodnp3/IStack.h
+-- Up-to-date: /usr/local/include/asiodnp3/MasterStackConfig.h
+-- Up-to-date: /usr/local/include/asiodnp3/IChannel.h
+-- Up-to-date: /usr/local/include/asiodnp3/ISessionAcceptor.h
+-- Up-to-date: /usr/local/include/asiodnp3/ErrorCodes.h
+-- Up-to-date: /usr/local/include/asiodnp3/IListenCallbacks.h
+-- Up-to-date: /usr/local/include/asiodnp3/DefaultListenCallbacks.h
+-- Up-to-date: /usr/local/include/asiodnp3/IMasterSession.h
+-- Up-to-date: /usr/local/include/asiodnp3/MasterTCPServer.h
+-- Up-to-date: /usr/local/include/asiodnp3/PrintingSOEHandler.h
+-- Up-to-date: /usr/local/include/asiodnp3/IMaster.h
+-- Up-to-date: /usr/local/include/asiodnp3/DNP3Manager.h
+-- Up-to-date: /usr/local/include/asiodnp3/DatabaseConfig.h
+-- Up-to-date: /usr/local/include/asiodnp3/IOutstation.h
+-- Up-to-date: /usr/local/include/asiodnp3/IMasterScan.h
+-- Up-to-date: /usr/local/include/asiodnp3/PrintingChannelListener.h
+-- Up-to-date: /usr/local/include/asiodnp3/X509Info.h
+-- Up-to-date: /usr/local/include/asiodnp3/ConsoleLogger.h
+-- Up-to-date: /usr/local/include/asiodnp3/UpdateBuilder.h
+-- Up-to-date: /usr/local/include/openpal
+-- Up-to-date: /usr/local/include/openpal/container
+-- Up-to-date: /usr/local/include/openpal/container/SecureBuffer.h
+-- Up-to-date: /usr/local/include/openpal/container/Array.h
+-- Up-to-date: /usr/local/include/openpal/container/Queue.h
+-- Up-to-date: /usr/local/include/openpal/container/LinkedList.h
+-- Up-to-date: /usr/local/include/openpal/container/WSlice.h
+-- Up-to-date: /usr/local/include/openpal/container/Settable.h
+-- Up-to-date: /usr/local/include/openpal/container/StaticBuffer.h
+-- Up-to-date: /usr/local/include/openpal/container/ArrayView.h
+-- Up-to-date: /usr/local/include/openpal/container/Pair.h
+-- Up-to-date: /usr/local/include/openpal/container/Buffer.h
+-- Up-to-date: /usr/local/include/openpal/container/RSlice.h
+-- Up-to-date: /usr/local/include/openpal/container/RingBuffer.h
+-- Up-to-date: /usr/local/include/openpal/container/HasSize.h
+-- Up-to-date: /usr/local/include/openpal/Configure.h
+-- Up-to-date: /usr/local/include/openpal/util
+-- Up-to-date: /usr/local/include/openpal/util/Comparisons.h
+-- Up-to-date: /usr/local/include/openpal/util/Finally.h
+-- Up-to-date: /usr/local/include/openpal/util/Uncopyable.h
+-- Up-to-date: /usr/local/include/openpal/util/SequenceNum.h
+-- Up-to-date: /usr/local/include/openpal/util/Limits.h
+-- Up-to-date: /usr/local/include/openpal/util/ToHex.h
+-- Up-to-date: /usr/local/include/openpal/serialization
+-- Up-to-date: /usr/local/include/openpal/serialization/UInt48LE.h
+-- Up-to-date: /usr/local/include/openpal/serialization/Serialization.h
+-- Up-to-date: /usr/local/include/openpal/serialization/UInt48Type.h
+-- Up-to-date: /usr/local/include/openpal/serialization/Serializer.h
+-- Up-to-date: /usr/local/include/openpal/serialization/Parse.h
+-- Up-to-date: /usr/local/include/openpal/serialization/FloatByteOrder.h
+-- Up-to-date: /usr/local/include/openpal/serialization/SerializationTemplatesLE.h
+-- Up-to-date: /usr/local/include/openpal/serialization/ByteSerialization.h
+-- Up-to-date: /usr/local/include/openpal/serialization/Format.h
+-- Up-to-date: /usr/local/include/openpal/serialization/DoubleFloat.h
+-- Up-to-date: /usr/local/include/openpal/serialization/SingleFloat.h
+-- Up-to-date: /usr/local/include/openpal/logging
+-- Up-to-date: /usr/local/include/openpal/logging/Logger.h
+-- Up-to-date: /usr/local/include/openpal/logging/StringFormatting.h
+-- Up-to-date: /usr/local/include/openpal/logging/Location.h
+-- Up-to-date: /usr/local/include/openpal/logging/LogEntry.h
+-- Up-to-date: /usr/local/include/openpal/logging/LogLevels.h
+-- Up-to-date: /usr/local/include/openpal/logging/LogFilters.h
+-- Up-to-date: /usr/local/include/openpal/logging/ILogHandler.h
+-- Up-to-date: /usr/local/include/openpal/logging/LogMacros.h
+-- Up-to-date: /usr/local/include/openpal/executor
+-- Up-to-date: /usr/local/include/openpal/executor/MonotonicTimestamp.h
+-- Up-to-date: /usr/local/include/openpal/executor/UTCTimestamp.h
+-- Up-to-date: /usr/local/include/openpal/executor/IMonotonicTimeSource.h
+-- Up-to-date: /usr/local/include/openpal/executor/IUTCTimeSource.h
+-- Up-to-date: /usr/local/include/openpal/executor/TimerRef.h
+-- Up-to-date: /usr/local/include/openpal/executor/ITimer.h
+-- Up-to-date: /usr/local/include/openpal/executor/TimeDuration.h
+-- Up-to-date: /usr/local/include/openpal/executor/IExecutor.h
+-- Up-to-date: /usr/local/include/openpal/channel
+-- Up-to-date: /usr/local/include/openpal/channel/IPhysicalLayerCallbacks.h
+-- Up-to-date: /usr/local/include/openpal/channel/IPhysicalLayer.h
+-- Up-to-date: /usr/local/include/asiopal
+-- Up-to-date: /usr/local/include/asiopal/UTCTimeSource.h
+-- Up-to-date: /usr/local/include/asiopal/IPEndpoint.h
+-- Up-to-date: /usr/local/include/asiopal/Executor.h
+-- Up-to-date: /usr/local/include/asiopal/ThreadPool.h
+-- Up-to-date: /usr/local/include/asiopal/TLSConfig.h
+-- Up-to-date: /usr/local/include/asiopal/SteadyClock.h
+-- Up-to-date: /usr/local/include/asiopal/SerialTypes.h
+-- Up-to-date: /usr/local/include/asiopal/ChannelRetry.h
+-- Up-to-date: /usr/local/include/asiopal/TCPClient.h
+-- Up-to-date: /usr/local/include/asiopal/IResourceManager.h
+-- Up-to-date: /usr/local/include/asiopal/TCPServer.h
+-- Up-to-date: /usr/local/include/asiopal/SerialChannel.h
+-- Up-to-date: /usr/local/include/asiopal/Synchronized.h
+-- Up-to-date: /usr/local/include/asiopal/ResourceManager.h
+-- Up-to-date: /usr/local/include/asiopal/IO.h
+-- Up-to-date: /usr/local/include/asiopal/LoggingConnectionCondition.h
+-- Up-to-date: /usr/local/include/asiopal/IListener.h
+-- Up-to-date: /usr/local/include/asiopal/IChannelCallbacks.h
+-- Up-to-date: /usr/local/include/asiopal/IOpenDelayStrategy.h
+-- Up-to-date: /usr/local/include/asiopal/Timer.h
+-- Up-to-date: /usr/local/include/asiopal/ASIOSerialHelpers.h
+-- Up-to-date: /usr/local/include/asiopal/SocketChannel.h
+-- Up-to-date: /usr/local/include/asiopal/IAsyncChannel.h
+-- Up-to-date: /usr/local/include/asiopal/SocketHelpers.h
+-- Up-to-date: /usr/local/include/asiopal/TimeConversions.h
+-- Up-to-date: /usr/local/include/dnp3decode
+-- Up-to-date: /usr/local/include/dnp3decode/IDecoderCallbacks.h
+-- Up-to-date: /usr/local/include/dnp3decode/Decoder.h
+removing swapfile...
+[LIBMODBUS]
+libtoolize: putting auxiliary files in AC_CONFIG_AUX_DIR, 'build-aux'.
+libtoolize: linking file 'build-aux/ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: linking file 'm4/libtool.m4'
+libtoolize: linking file 'm4/ltoptions.m4'
+libtoolize: linking file 'm4/ltsugar.m4'
+libtoolize: linking file 'm4/ltversion.m4'
+libtoolize: linking file 'm4/lt~obsolete.m4'
+configure.ac:33: installing 'build-aux/compile'
+configure.ac:32: installing 'build-aux/missing'
+src/Makefile.am: installing 'build-aux/depcomp'
+
+------------------------------------------------------
+Initialized build system. You can now run ./configure 
+------------------------------------------------------
+
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... gawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking how to create a pax tar archive... gnutar
+checking for style of include used by make... GNU
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking dependency style of gcc... gcc3
+checking for gcc option to accept ISO C99... none needed
+checking for gcc option to accept ISO Standard C... (cached) none needed
+checking how to run the C preprocessor... gcc -E
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking minix/config.h usability... no
+checking minix/config.h presence... no
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking whether make supports nested variables... (cached) yes
+checking build system type... x86_64-pc-linux-gnu
+checking host system type... x86_64-pc-linux-gnu
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for fgrep... /bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert x86_64-pc-linux-gnu file names to x86_64-pc-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-pc-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /bin/dd
+checking how to truncate binary pipes... /bin/dd bs=4096 count=1
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking arpa/inet.h usability... yes
+checking arpa/inet.h presence... yes
+checking for arpa/inet.h... yes
+checking byteswap.h usability... yes
+checking byteswap.h presence... yes
+checking for byteswap.h... yes
+checking errno.h usability... yes
+checking errno.h presence... yes
+checking for errno.h... yes
+checking fcntl.h usability... yes
+checking fcntl.h presence... yes
+checking for fcntl.h... yes
+checking limits.h usability... yes
+checking limits.h presence... yes
+checking for limits.h... yes
+checking linux/serial.h usability... yes
+checking linux/serial.h presence... yes
+checking for linux/serial.h... yes
+checking netdb.h usability... yes
+checking netdb.h presence... yes
+checking for netdb.h... yes
+checking netinet/in.h usability... yes
+checking netinet/in.h presence... yes
+checking for netinet/in.h... yes
+checking netinet/tcp.h usability... yes
+checking netinet/tcp.h presence... yes
+checking for netinet/tcp.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking sys/params.h usability... no
+checking sys/params.h presence... no
+checking for sys/params.h... no
+checking sys/socket.h usability... yes
+checking sys/socket.h presence... yes
+checking for sys/socket.h... yes
+checking sys/time.h usability... yes
+checking sys/time.h presence... yes
+checking for sys/time.h... yes
+checking for sys/types.h... (cached) yes
+checking termios.h usability... yes
+checking termios.h presence... yes
+checking for termios.h... yes
+checking time.h usability... yes
+checking time.h presence... yes
+checking for time.h... yes
+checking for unistd.h... (cached) yes
+checking for asciidoc... no
+checking for xmlto... no
+checking whether to build documentation... no
+configure: WARNING: The tools to build the documentation aren't installed
+checking whether __CYGWIN__ is declared... no
+checking for pid_t... yes
+checking vfork.h usability... no
+checking vfork.h presence... no
+checking for vfork.h... no
+checking for fork... yes
+checking for vfork... yes
+checking for working fork... yes
+checking for working vfork... (cached) yes
+checking for stdlib.h... (cached) yes
+checking for GNU libc compatible malloc... yes
+checking for accept4... yes
+checking for getaddrinfo... yes
+checking for gettimeofday... yes
+checking for inet_ntoa... yes
+checking for memset... yes
+checking for select... yes
+checking for socket... yes
+checking for strerror... yes
+checking for strlcpy... no
+checking for inline... inline
+checking for g++... g++
+checking whether we are using the GNU C++ compiler... yes
+checking whether g++ accepts -g... yes
+checking dependency style of g++... gcc3
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/ld -m elf_x86_64
+checking if the linker (/usr/bin/ld -m elf_x86_64) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for int64_t... yes
+checking for size_t... yes
+checking for ssize_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint8_t... yes
+checking winsock2.h usability... no
+checking winsock2.h presence... no
+checking for winsock2.h... no
+checking whether TIOCSRS485 is declared... yes
+checking whether TIOCM_RTS is declared... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/modbus-version.h
+config.status: creating src/win32/modbus.dll.manifest
+config.status: creating tests/Makefile
+config.status: creating doc/Makefile
+config.status: creating libmodbus.pc
+config.status: creating config.h
+config.status: config.h is unchanged
+config.status: creating tests/unit-test.h
+config.status: tests/unit-test.h is unchanged
+config.status: executing depfiles commands
+config.status: executing libtool commands
+
+        libmodbus 3.1.4
+        ===============
+
+        prefix:                 /usr/local
+        sysconfdir:             ${prefix}/etc
+        libdir:                 ${exec_prefix}/lib
+        includedir:             ${prefix}/include
+
+        compiler:               gcc
+        cflags:                 -g -O2
+        ldflags:                
+
+        documentation:          no
+        tests:                  yes
+
+Making install in src
+  CC       modbus.lo
+  CC       modbus-data.lo
+  CC       modbus-rtu.lo
+  CC       modbus-tcp.lo
+  CCLD     libmodbus.la
+ /bin/mkdir -p '/usr/local/lib'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libmodbus.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libmodbus.so.5.1.0 /usr/local/lib/libmodbus.so.5.1.0
+libtool: install: (cd /usr/local/lib && { ln -s -f libmodbus.so.5.1.0 libmodbus.so.5 || { rm -f libmodbus.so.5 && ln -s libmodbus.so.5.1.0 libmodbus.so.5; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libmodbus.so.5.1.0 libmodbus.so || { rm -f libmodbus.so && ln -s libmodbus.so.5.1.0 libmodbus.so; }; })
+libtool: install: /usr/bin/install -c .libs/libmodbus.lai /usr/local/lib/libmodbus.la
+libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin:/sbin" ldconfig -n /usr/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+ /bin/mkdir -p '/usr/local/include/modbus'
+ /usr/bin/install -c -m 644 modbus.h modbus-version.h modbus-rtu.h modbus-tcp.h '/usr/local/include/modbus'
+Making install in doc
+make[2]: Nothing to be done for 'install-exec-am'.
+Making install in tests
+  CC       bandwidth-server-one.o
+  CCLD     bandwidth-server-one
+  CC       bandwidth-server-many-up.o
+  CCLD     bandwidth-server-many-up
+  CC       bandwidth-client.o
+  CCLD     bandwidth-client
+  CC       random-test-server.o
+  CCLD     random-test-server
+  CC       random-test-client.o
+  CCLD     random-test-client
+  CC       unit-test-server.o
+  CCLD     unit-test-server
+  CC       unit-test-client.o
+  CCLD     unit-test-client
+  CC       version.o
+  CCLD     version
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Nothing to be done for 'install-exec-am'.
+ /bin/mkdir -p '/usr/local/share/doc/libmodbus'
+ /usr/bin/install -c -m 644 MIGRATION README.md '/usr/local/share/doc/libmodbus'
+ /bin/mkdir -p '/usr/local/lib/pkgconfig'
+ /usr/bin/install -c -m 644 libmodbus.pc '/usr/local/lib/pkgconfig'
+[OPENPLC SERVICE]
+Enabling OpenPLC Service...
+[FINALIZING]
+Activating Blank driver
+Setting Platform
+Optimizing ST program...
+Generating C files...
+POUS.c
+POUS.h
+LOCATED_VARIABLES.h
+VARIABLES.csv
+Config0.c
+Config0.h
+Res0.c
+Moving Files...
+Compiling for Linux
+Generating object files...
+Generating glueVars...
+Compiling main program...
+persistent_storage.cpp:57:9: error: no matching function for call to 'sprintf'
+        sprintf(log_msg, "Creating Persistent Storage file\n");
+        ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+persistent_storage.cpp:64:9: error: no matching function for call to 'sprintf'
+        sprintf(log_msg, "Persistent Storage: Error creating persistent memory file!\n");
+        ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+persistent_storage.cpp:66:9: error: void function 'startPstorage' should not return a value [-Wreturn-type]
+        return 0;
+        ^      ~
+persistent_storage.cpp:71:9: error: no matching function for call to 'sprintf'
+        sprintf(log_msg, "Persistent Storage: Error writing to persistent memory file!\n");
+        ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+persistent_storage.cpp:73:9: error: void function 'startPstorage' should not return a value [-Wreturn-type]
+        return 0;
+        ^      ~
+persistent_storage.cpp:103:17: error: no matching function for call to 'sprintf'
+                sprintf(log_msg, "Persistent Storage: Error creating persistent memory file!\n");
+                ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+persistent_storage.cpp:105:17: error: void function 'startPstorage' should not return a value [-Wreturn-type]
+                return 0;
+                ^      ~
+persistent_storage.cpp:110:17: error: no matching function for call to 'sprintf'
+                sprintf(log_msg, "Persistent Storage: Error writing to persistent memory file!\n");
+                ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+persistent_storage.cpp:112:17: error: void function 'startPstorage' should not return a value [-Wreturn-type]
+                return 0;
+                ^      ~
+persistent_storage.cpp:133:9: error: no matching function for call to 'sprintf'
+        sprintf(log_msg, "Warning: Persistent Storage file not found\n");
+        ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+persistent_storage.cpp:143:9: error: no matching function for call to 'sprintf'
+        sprintf(log_msg, "Persistent Storage: Error while trying to read persistent.file!\n");
+        ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+persistent_storage.cpp:150:5: error: no matching function for call to 'sprintf'
+    sprintf(log_msg, "Persistent Storage: Reading persistent.file into local buffers\n");
+    ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+12 errors generated.
+server.cpp:97:9: error: no matching function for call to 'sprintf'
+        sprintf(log_msg, "Server: error creating stream socket => %s\n", strerror(errno));
+        ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:118:9: error: no matching function for call to 'sprintf'
+        sprintf(log_msg, "Server: error binding socket => %s\n", strerror(errno));
+        ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:125:5: error: no matching function for call to 'sprintf'
+    sprintf(log_msg, "Server: Listening on port %d\n", port);
+    ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:148:5: error: no matching function for call to 'sprintf'
+    sprintf(log_msg, "Server: waiting for new client...\n");
+    ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:213:5: error: no matching function for call to 'sprintf'
+    sprintf(log_msg, "Server: Thread created for client ID: %d\n", client_fd);
+    ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:227:17: error: no matching function for call to 'sprintf'
+                sprintf(log_msg, "Modbus Server: client ID: %d has closed the connection\n", client_fd);
+                ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:232:17: error: no matching function for call to 'sprintf'
+                sprintf(log_msg, "Modbus Server: Something is wrong with the  client ID: %d message Size : %i\n", client_fd, messageSize);
+                ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:242:5: error: no matching function for call to 'sprintf'
+    sprintf(log_msg, "Terminating Modbus connections thread\r\n");
+    ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:273:13: error: no matching function for call to 'sprintf'
+            sprintf(log_msg, "Server: Error accepting client!\n");
+            ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:282:13: error: no matching function for call to 'sprintf'
+            sprintf(log_msg, "Server: Client accepted! Creating thread for the new client ID: %d...\n", client_fd);
+            ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+server.cpp:295:5: error: no matching function for call to 'sprintf'
+    sprintf(log_msg, "Terminating Server thread\r\n");
+    ^~~~~~~
+/usr/include/stdio.h:320:12: note: candidate function not viable: no known conversion from 'unsigned char[1000]' to 'char *__restrict' for 1st argument
+extern int sprintf (char *__restrict __s,
+           ^
+11 errors generated.
+Error compiling C files
+Compilation finished with errors!
