@@ -1171,7 +1171,7 @@ configure:13823: $? = 0
 configure:13823: result: yes
 configure:13823: checking for strlcpy
 configure:13823: gcc -o conftest -g -O2   conftest.c  >&5
-/tmp/ccCJFR9k.o: In function `main':
+/tmp/ccr5Li9G.o: In function `main':
 /home/raihan/OpenPLC_v3/utils/libmodbus_src/conftest.c:93: undefined reference to `strlcpy'
 collect2: error: ld returned 1 exit status
 configure:13823: $? = 1
