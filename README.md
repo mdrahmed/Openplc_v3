@@ -1,5 +1,6 @@
 # MODIFIED VERSION OF OPENPLC_V3
-**MODIFIED WITH CLANG**
+**MODIFIED WITH CLANG for `linux` and `rpi`.**
+The `instrument.so` is the `x86-64 bit LSB shared object` for linux. And `instrument_arm64.so` is the `ARM aarch64 ELF 64-bit LSB shared object` for rpi.
 
 
 # OpenPLC Runtime version 3
