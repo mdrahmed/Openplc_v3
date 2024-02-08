@@ -149,11 +149,11 @@ configure:4187: checking lex output file root
 configure:4201: result: lex.yy
 configure:4206: checking lex library
 configure:4220: gcc -o conftest    conftest.c   >&5
-/tmp/cc2CmsbS.o: In function `yylex':
+/tmp/ccqmxVct.o: In function `yylex':
 conftest.c:(.text+0x768): undefined reference to `yywrap'
-/tmp/cc2CmsbS.o: In function `input':
+/tmp/ccqmxVct.o: In function `input':
 conftest.c:(.text+0x1292): undefined reference to `yywrap'
-/tmp/cc2CmsbS.o: In function `main':
+/tmp/ccqmxVct.o: In function `main':
 conftest.c:(.text+0x1f69): undefined reference to `yywrap'
 collect2: error: ld returned 1 exit status
 configure:4220: $? = 1
@@ -2649,7 +2649,7 @@ configure:5935: gcc -o conftest    conftest.c  >&5
 conftest.c:65:6: warning: conflicting types for built-in function 'pow' [-Wbuiltin-declaration-mismatch]
  char pow ();
       ^~~
-/tmp/ccHoegoP.o: In function `main':
+/tmp/cc5foazA.o: In function `main':
 conftest.c:(.text+0xa): undefined reference to `pow'
 collect2: error: ld returned 1 exit status
 configure:5935: $? = 1
